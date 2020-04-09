@@ -261,6 +261,7 @@
     </plugins>
   </reporting>
 
+<!-- Adding the Distibution Management section by Arvind to deploy to Nexus -->
   <distributionManagement>
   <repository>
     <id>deployment</id>
