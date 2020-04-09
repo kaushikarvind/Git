@@ -261,4 +261,18 @@
     </plugins>
   </reporting>
 
+  <distributionManagement>
+  <repository>
+    <id>deployment</id>
+    <name>Internal Release1</name>
+    <url>http://192.168.0.17:8081/nexus/content/repositories/releases/</url>
+  </repository>
+
+  <snapshotRepository>
+    <id>deployment</id>
+    <name>Internal Release</name>
+    <url>http://192.168.0.17:8081/nexus/content/repositories/snapshots/</url>
+  </snapshotRepository>
+</distributionManagement>  
+    
 </project>
