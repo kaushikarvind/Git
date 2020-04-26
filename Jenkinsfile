@@ -1,28 +1,31 @@
 pipeline {
-    agent {
-		label 'rhel'
-	}
-    
+    agent any
+	tools {
+	    jdk 'JDK'
+	    maven 'Maven'
+    }
     stages{
-        
         stage('Git Clone or Pull'){
-            
             steps {
-                git 'https://github.com/asquarezone/spring-petclinic.git'
+                git 'https://github.com/kaushikarvind/spring-petclinic.git'
             }
         }
-        
+        stage('SonarQube Analysis'){
+            steps{
+                withSonarQubeEnv(credentialsId: 'sonarqube_user', installationName: 'SonarQube'){
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'    
+                }
+            }
+        }
         stage('Maven Build'){
             steps{
                 sh 'mvn clean install'
             }
         }
-        
         stage('Publish'){
             steps{
                 archiveArtifacts 'target/springboot-petclinic-1.4.1.jar'
                 junit 'target/surefire-reports/*.xml'
-                
             }
         }
     }
@@ -32,16 +35,15 @@ pipeline {
             subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to Master",
             body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Development Promoted to Master":</p>
             <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            to: "shaik.khaja.ibrahim@gmail.com"
+            to: "kaushik.arvind@gmail.com"
           )
         }
-   
         failure {
         emailext(
             subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
             body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed!":</p>
             <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            to: "shaik.khaja.ibrahim@gmail.com"
+            to: "kaushik.arvind@gmail.com"
         )
         }
   }
