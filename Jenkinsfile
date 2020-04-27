@@ -93,22 +93,22 @@ pipeline {
             }
         }
     }
-	post {
-        success {
-          emailext(
-            subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to Master",
-            body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Development Promoted to Master":</p>
-            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            to: "kaushik.arvind@gmail.com"
-          )
-        }
-        failure {
-        emailext(
-            subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
-            body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed!":</p>
-            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
-            to: "kaushik.arvind@gmail.com"
-        )
-        }
-    }
+        //post {
+        //success {
+          //emailext(
+            //subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to Master",
+            //body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Development Promoted to Master":</p>
+            //<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+            //to: "kaushik.arvind@gmail.com"
+          //)
+        //}
+        //failure {
+        //emailext(
+          //  subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
+            //body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed!":</p>
+            //<p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",
+            //to: "kaushik.arvind@gmail.com"
+        //)
+        //}
+    //}
 }
