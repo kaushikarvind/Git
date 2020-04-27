@@ -28,8 +28,7 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
-    }
-	stage('DeployToStaging') {
+		stage('DeployToStaging') {
             when {
                 branch 'master'
             }
@@ -109,5 +108,5 @@ pipeline {
             to: "kaushik.arvind@gmail.com"
         )
         }
-  }
+    }
 }
