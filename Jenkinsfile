@@ -49,12 +49,11 @@ pipeline {
                                         //sourceFiles: 'target/springboot-petclinic-1.4.1.jar',
                                         sourceFiles: 'target/*',
                                         //removePrefix: 'target/',
-                                        remoteDirectory: 'target/',
+                                        remoteDirectory: '/home/vagrant',
                                         //execCommand: 'sudo mkdir a1b2 && sudo mkdir check'
                                         //execCommand: 'sudo cd /home/vagrant/spring-petclinic && sudo pwd && sudo java -jar springboot-petclinic-1.4.1.jar'
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
-                                        execCommand: 'sudo rm -rf ./spring-petclinic && git clone https://github.com/kaushikarvind/spring-petclinic.git && sudo cd ./spring-petclinic && sudo mv ./target/* ./spring-petclinic/target/ && sudo java -jar ./spring-petclinic/target/springboot-petclinic-1.4.1.jar'
-                                            
+                                        execCommand: 'sudo rm -rf /home/vagrant/spring-petclinic && git clone https://github.com/kaushikarvind/spring-petclinic.git && sudo mv /home/vagrant/target/* home/vagrant/spring-petclinic/ && sudo cd /home/vagrant/spring-petclinic && sudo java -jar ./spring-petclinic/target/springboot-petclinic-1.4.1.jar'
                                     )
                                 ]
                             ) 
