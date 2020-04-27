@@ -50,8 +50,7 @@ pipeline {
                                         //removePrefix: 'target/',
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                         remoteDirectory: '/tmp/spring-petclinic',
-                                        execCommand: 'git clone https://github.com/kaushikarvind/spring-petclinic.git && echo "Git Clone done"'
-                                        //execCommand: 'sudo cp -y /target/springboot-petclinic-1.4.1.jar && sudo java -jar springboot-petclinic-1.4.1.jar'
+                                        execCommand: 'sudo yum -y install git && sudo git clone https://github.com/kaushikarvind/spring-petclinic.git && sudo cp -y /target/springboot-petclinic-1.4.1.jar && sudo java -jar springboot-petclinic-1.4.1.jar'
                                     )
                                 ]
                             ) 
