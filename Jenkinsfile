@@ -48,13 +48,14 @@ pipeline {
                                     sshTransfer(
                                         sourceFiles: 'target/springboot-petclinic-1.4.1.jar',
                                         removePrefix: 'target/',
-                                        git 'https://github.com/spring-projects/spring-petclinic.git'
+                                        git clone ('https://github.com/spring-projects/spring-petclinic.git')
                                         remoteDirectory: '/spring-petclinic',
+                                        execCommand: 'sudo cp -y /target/springboot-petclinic-1.4.1.jar'
                                         execCommand: 'sudo java -jar springboot-petclinic-1.4.1.jar'
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                     )
                                 ]
-                            )
+                            ) 
                         ]
                     )
                 }
