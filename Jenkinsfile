@@ -49,9 +49,10 @@ pipeline {
                                         //sourceFiles: 'target/springboot-petclinic-1.4.1.jar',
                                         sourceFiles: 'target/*',
                                         //removePrefix: 'target/',
-                                        remoteDirectory: '/tmp',
+                                        remoteDirectory: '/tmp/target',
+                                        execCommand: 'sudo java -jar springboot-petclinic-1.4.1.jar
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
-                                        execCommand: 'sudo pwd && rm -rf /tmp/spring-petclinic && git clone https://github.com/kaushikarvind/spring-petclinic.git'
+                                        //execCommand: 'sudo pwd && rm -rf /tmp/spring-petclinic && git clone https://github.com/kaushikarvind/spring-petclinic.git'
                                         //&& rm -f /tmp/spring-petclinic/target/*.jar && cd /tmp/spring-petclinic && sudo cp /tmp/target/springboot-petclinic-1.4.1.jar tmp/spring-petclinic/target/ && sudo java -jar springboot-petclinic-1.4.1.jar'
                                     )
                                 ]
