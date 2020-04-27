@@ -50,7 +50,7 @@ pipeline {
                                         sourceFiles: 'target/*',
                                         //removePrefix: 'target/',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo mkdir a1b2 && mkdir check'
+                                        execCommand: 'sudo mkdir a1b2 && sudo mkdir check'
                                         //execCommand: 'sudo cd /tmp/target && sudo pwd && sudo java -jar springboot-petclinic-1.4.1.jar'
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                         //execCommand: 'sudo pwd && rm -rf /tmp/spring-petclinic && git clone https://github.com/kaushikarvind/spring-petclinic.git'
