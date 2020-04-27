@@ -47,9 +47,9 @@ pipeline {
                                 transfers: [
                                     sshTransfer(
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'sudo rm -rf /tmp/spring-petclinic/* && sudo git clone https://github.com/kaushikarvind/spring-petclinic.git'
+                                        execCommand: 'sudo rm -rf /tmp/spring-petclinic/* && sudo git clone https://github.com/kaushikarvind/spring-petclinic.git',
                                         sourceFiles: '/spring-petclinic/target/springboot-petclinic-1.4.1.jar',
-                                         execCommand: 'sudo cp /spring-petclinic/target/springboot-petclinic-1.4.1.jar && sudo java -jar springboot-petclinic-1.4.1.jar' 
+                                        execCommand: 'sudo cd /spring-petclinic && sudo cp /spring-petclinic/target/springboot-petclinic-1.4.1.jar && sudo java -jar springboot-petclinic-1.4.1.jar' 
                                         //removePrefix: 'target/',
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                         //execCommand: 'sudo yum -y install git && rm -rf /tmp/spring-petclinic/* && sudo git clone https://github.com/kaushikarvind/spring-petclinic.git && sudo cp /target/springboot-petclinic-1.4.1.jar && sudo java -jar springboot-petclinic-1.4.1.jar'
