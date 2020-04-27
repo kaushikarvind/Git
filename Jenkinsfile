@@ -10,13 +10,13 @@ pipeline {
                 git 'https://github.com/kaushikarvind/spring-petclinic.git'
             }
         }
-        stage('SonarQube Analysis'){
-            steps{
-                withSonarQubeEnv(credentialsId: 'sonarqube_user', installationName: 'SonarQube'){
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'    
-                }
-            }
-        }
+        //stage('SonarQube Analysis'){
+          //  steps{
+            //    withSonarQubeEnv(credentialsId: 'sonarqube_user', installationName: 'SonarQube'){
+              //      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'    
+                //}
+            //}
+        //}
         stage('Maven Build'){
             steps{
                 sh 'mvn clean install'
