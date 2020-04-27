@@ -49,7 +49,7 @@ pipeline {
                                         //sourceFiles: 'target/springboot-petclinic-1.4.1.jar',
                                         sourceFiles: 'target/*',
                                         //removePrefix: 'target/',
-                                        //remoteDirectory: '/tmp',
+                                        remoteDirectory: '/tmp',
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                         //execCommand: 'sudo mkdir /tmp/spring-petclinic && cd /tmp/spring-petclinic && sudo cp /target/springboot-petclinic-1.4.1.jar && sudo java -jar springboot-petclinic-1.4.1.jar'
                                     )
