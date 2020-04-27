@@ -49,6 +49,7 @@ pipeline {
                                         sourceFiles: 'target/springboot-petclinic-1.4.1.jar',
                                         removePrefix: 'target/',
                                         remoteDirectory: '/tmp',
+                                        execCommand: 'sudo java -jar springboot-petclinic-1.4.1.jar
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                     )
                                 ]
@@ -81,6 +82,7 @@ pipeline {
                                         sourceFiles: 'target/springboot-petclinic-1.4.1.jar',
                                         removePrefix: 'target/',
                                         remoteDirectory: '/tmp',
+                                        execCommand: 'sudo java -jar springboot-petclinic-1.4.1.jar
                                         //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                     )
                                 ]
