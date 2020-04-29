@@ -6,7 +6,7 @@
   <groupId>org.springframework.samples</groupId>
   <artifactId>springboot-petclinic</artifactId>
   <!-- <version>1.4.1</version> -->
-  <version>1.4.$BUILD_NUMBER</version>
+  <version>1.4.${BUILD_NUMBER}</version>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
