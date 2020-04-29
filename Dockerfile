@@ -1,7 +1,7 @@
 FROM java:8-jdk-alpine
-WORKDIR /home/vagrant/
-#ADD https://gitlab.com/kaushikarvind/petclinic/-/tree/master/target/*.jar /usr/app/
-RUN git clone https://github.com/kaushikarvind/spring-petclinic.git
-COPY target/spring-petclinic*.jar ~/spring-petclinic/target/sprint-petclinic.jar
+RUN mkdir /usr/app/petclinic
+WORKDIR /usr/app/petclinic
+COPY petclinic.zip /usr/app/petclinic
+RUN unzip petclinic.zip
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "*.jar"]
