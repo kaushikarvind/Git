@@ -6,3 +6,4 @@ ADD petclinic.zip /usr/app/petclinic
 RUN cd /usr/app/petclinic && unzip petclinic.zip && mv *.jar petclinic.jar && chmod 777 petclinic.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "petclinic.jar"]
+CMD ["-start"]
