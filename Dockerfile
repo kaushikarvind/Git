@@ -1,11 +1,12 @@
 FROM java:8-jdk-alpine
 USER root
 WORKDIR /usr
-RUN mkdir /usr/petclinic && cd /usr/petclinic
+RUN mkdir /usr/petclinic && ls -ltr
+WORKDIR /usr/petclinic
 ADD petclinic.zip /usr/petclinic/
-RUN pwd
+RUN pwd && ls -ltr
 #WORKDIR /usr/petclinic
-RUN cd /usr/petclinic && unzip petclinic.zip
+RUN unzip petclinic.zip
 RUN ls -lah
 RUN mv *.jar petclinic.jar
 RUN ls -lah
