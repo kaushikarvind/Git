@@ -1,4 +1,5 @@
 FROM java:8-jdk-alpine
+USER root
 WORKDIR /usr/app
 RUN mkdir petclinic
 ADD petclinic.zip /usr/app/petclinic
