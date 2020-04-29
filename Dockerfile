@@ -3,8 +3,8 @@ FROM java:8-jdk-alpine
 #RUN chmod 777 var/jenkins_home/workspace/PetClinic/petclinic.zip
 WORKDIR /usr/app
 RUN mkdir petclinic
-COPY var/jenkins_home/workspace/PetClinic/petclinic/ /usr/app/
+COPY -r /petclinic/* /usr/app/
 RUN cd /usr/app/petclinic
-RUN unzip petclinic.zip
+#RUN unzip petclinic.zip
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "*.jar"]
