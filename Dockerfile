@@ -1,5 +1,5 @@
 FROM java:8-jdk-alpine
-USER root
+USER vagrant
 WORKDIR /usr/app
 RUN mkdir petclinic
 COPY petclinic.zip /usr/app/petclinic/petclinic.zip
