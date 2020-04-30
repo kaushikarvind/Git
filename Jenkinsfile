@@ -52,7 +52,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sshagent(['client1_login_key']) {
+                sshagent(['master_login_key']) {
                     sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.33.10 docker rm -f petclinic || true'
                     sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.33.10 docker run -d --name petclinic -p 8080:8080 kaushikarvind/petclinic:${BUILD_NUMBER}'
                 }
