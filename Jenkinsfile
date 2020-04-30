@@ -21,7 +21,7 @@ pipeline {
         stage('Maven Build & Package'){
             steps{
                 sh 'mvn clean package'
-                sh 'rm -f /var/jenkins_home/workspace/PetClinic/petclinic.zip'
+                sh 'rm -f /var/jenkins_home/workspace/Springboot-PetClinic_master/petclinic.zip'
                 zip zipFile: 'petclinic.zip', archive: true, dir: 'target'
                 sh 'chmod 777 petclinic.zip'
                 junit 'target/surefire-reports/*.xml'
