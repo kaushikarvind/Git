@@ -21,7 +21,7 @@ pipeline {
         stage('Maven Build & Package'){
             steps{
                 sh 'mvn clean package'
-                sh 'rm -f /var/jenkins_home/workspace/Springboot-PetClinic_master/petclinic.zip'
+                sh 'rm -f /var/jenkins_home/workspace/PetClinic/petclinic.zip'
                 zip zipFile: 'petclinic.zip', archive: true, dir: 'target'
                 sh 'chmod 777 petclinic.zip'
                 junit 'target/surefire-reports/*.xml'
@@ -29,45 +29,45 @@ pipeline {
             }
         }
         stage('Build Docker Image'){
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             steps {
                 sh 'docker build -t kaushikarvind/petclinic:${BUILD_NUMBER} .'
             }
         }
         stage('Push Docker Image to Docker Hub'){
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             steps {
-                withDockerRegistry([ credentialsId: "docker_hub_login", url: "" ]) {
+                withDockerRegistry([ credentialsId: "docker_hub_user", url: "" ]) {
                     sh 'docker push kaushikarvind/petclinic:${BUILD_NUMBER}'
                     //sh 'docker push kaushikarvind/petclinic:latest'
                 }
             }
         }
         stage('Deploy to Staging '){
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             steps {
                 sshagent(['master_login_key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.33.10 docker rm -f petclinic || true'
-                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.33.10 docker run -d --name petclinic -p 8080:8080 kaushikarvind/petclinic:${BUILD_NUMBER}'
+                    sh 'ssh -o StrictHostKeyChecking=no vagrant@${master_ip} docker rm -f petclinic || true'
+                    sh 'ssh -o StrictHostKeyChecking=no vagrant@${master_ip} docker run -d --name petclinic -p 8080:8080 kaushikarvind/petclinic:${BUILD_NUMBER}'
                 }
             }
         }    
         stage('Deploy to Prod '){
-            when {
-                branch 'master'
-            }
+            //when {
+              //  branch 'master'
+            //}
             steps {
                 input 'Does the Staging environment look OK?'
                 milestone(1)
                 sshagent(['client1_login_key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.33.20 docker rm -f petclinic || true'
-                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.33.20 docker run -d --name petclinic -p 8080:8080 kaushikarvind/petclinic:${BUILD_NUMBER}'
+                    sh 'ssh -o StrictHostKeyChecking=no vagrant@${client1_ip} docker rm -f petclinic || true'
+                    sh 'ssh -o StrictHostKeyChecking=no vagrant@${client1_ip} docker run -d --name petclinic -p 8080:8080 kaushikarvind/petclinic:${BUILD_NUMBER}'
                 }
             }
         }
